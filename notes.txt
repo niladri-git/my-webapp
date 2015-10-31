@@ -1,0 +1,51 @@
+$ mvn archetype:generate  -DarchetypeGroupId=org.apache.maven.archetypes  -DarchetypeArtifactId=maven-archetype-webapp  -DgroupId=com.mycompany.app  -DartifactId=my-webapp  -DinteractiveMode=false
+
+$ mvn clean package
+
+Configuring settings.xml
+==============================
+
+$ echo $M2_HOME
+
+$ which mvn
+/usr/bin/mvn
+
+$ ls -l /usr/bin/mvn
+lrwxrwxrwx 1 root root 21 Oct 31 17:24 /usr/bin/mvn -> /etc/alternatives/mvn
+
+$ ls -ltr /etc/alternatives/mvn
+lrwxrwxrwx 1 root root 24 Oct 31 17:24 /etc/alternatives/mvn -> /usr/share/maven/bin/mvn
+
+$ ls -ltr /usr/share/maven/bin/mvn
+-rwxr-xr-x 1 root root 5064 Oct 21  2013 /usr/share/maven/bin/mvn
+
+$ cd /usr/share/maven/
+
+niladri@mint /usr/share/maven $ ls -ltr
+lrwxrwxrwx 1 root root   10 Oct 30  2013 conf -> /etc/maven
+drwxr-xr-x 2 root root 4096 Oct 31 17:24 man
+drwxr-xr-x 2 root root 4096 Oct 31 17:24 lib
+drwxr-xr-x 2 root root 4096 Oct 31 17:24 boot
+drwxr-xr-x 2 root root 4096 Oct 31 17:24 bin
+
+niladri@mint /usr/share/maven $ cd /etc/maven
+
+niladri@mint /etc/maven $ ls -ltr
+-rw-r--r-- 1 root root 10224 Oct 21  2013 settings.xml
+-rw-r--r-- 1 root root   184 Oct 21  2013 m2.conf
+
+
+Edit settings.xml and tomcat-users.xml.
+
+
+Deploying Webapp
+====================
+
+$ mvn tomcat:deploy
+
+$ mvn tomcat:redeploy
+
+
+Access the webapp from browser:
+http://localhost:8080/my-webapp/
+
